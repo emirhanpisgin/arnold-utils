@@ -2,6 +2,8 @@ import { Client, Events, IntentsBitField, type GuildTextBasedChannel } from "dis
 import { config } from "dotenv";
 config();
 
+const userRoleId = "733818614561636382";
+
 const client = new Client({
 	intents: [IntentsBitField.Flags.Guilds, IntentsBitField.Flags.GuildMembers],
 });
@@ -11,7 +13,6 @@ client.on(Events.ClientReady, async (client) => {
 });
 
 client.on(Events.GuildMemberAdd, async (member) => {
-	const userRoleId = "733818614561636382";
 	const welcomeChannel = (await member.guild.channels.fetch("1227706309390893076")) as GuildTextBasedChannel;
 
 	await member.roles.add(userRoleId);
